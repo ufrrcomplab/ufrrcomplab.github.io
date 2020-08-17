@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Mapa de Roraima</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.js"></script>
+	    <link
+	      rel="stylesheet"
+	      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.1/mapbox-gl-directions.css"
+	      type="text/css"
+	    />
+        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="./styles.css" />
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <section id="layers"> <!-- BOX BEGGINING -->
+    <div class="menu" id="style-3"> <!-- MENU BEGGINING -->
+ 	<button class="accordion">Divisão territorial <!-- SECTION BEGGINING -->
+        <div class="icon">
+          <img src="./icons/chevron-down.svg" class="icon-expand">
+          <img src="./icons/chevron-up.svg" class="icon-retract">
+        </div>
+      </button>
+      <div class="panel"> 
+        <section class="layer-labels">
+          <section>
+            <label class="container">Limites municipais
+              <input type="checkbox" checked="checked" onclick="hideOrShowLayer('limites_municipais')">
+              <span class="limites_municipais"></span>
+            </label>
+            <label class="container">Sedes municipais
+              <input type="checkbox"   onclick="hideOrShowLayer('#')">
+              <span class="#"></span>
+            </label>
+          </section>
+        </section>
+      </div> <!-- SECTION ENDING -->
+      <button class="accordion">Clima <!-- SECTION BEGGINING -->
+        <div class="icon">
+          <img src="./icons/chevron-down.svg" class="icon-expand">
+          <img src="./icons/chevron-up.svg" class="icon-retract">
+        </div>
+      </button>
+      <div class="panel"> 
+        <button class="accordion" style="background-color: #fff;">Mensal <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Janeiro
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Fevereiro
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Março
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Abril
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Maio
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Junho
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Julho
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Agosto
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Setembro
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Outubro
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Novembro
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Dezembro
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>       
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+        <button class="accordion" style="background-color: #fff;">Estações <!-- SUBSECTION BEGGINING -->
+          <!-- <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div> -->
+        </button>
+
+      </div> <!-- SECTION ENDING -->
+
+      <button class="accordion" >Solos <!-- SECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel">
+          <label class="container">Mostrar/Não mostrar Classificação
+            <input type="checkbox" onclick="hideOrShowLayer('solos')">
+            <span class="solos"></span>
+          </label>
+          <br>
+          <section class="soil-labels">
+            <section>
+
+              <label class="label_box">GXbd3
+                <span class="legenda_solo" style="background-color: #d7191c;"></span>
+              </label>
+              <label class="label_box">SNo1
+                <span class="legenda_solo" style="background-color: #da2421;"></span>
+              </label>
+              <label class="label_box">SXd1
+                <span class="legenda_solo" style="background-color: #dd3026;"></span>
+              </label>
+              <label class="label_box">GXbd1
+                <span class="legenda_solo" style="background-color: #e03b2c;"></span>
+              </label>
+              <label class="label_box">RQg1
+                <span class="legenda_solo" style="background-color: #e34731;"></span>
+              </label>
+              <label class="label_box">GXbd2
+                <span class="legenda_solo" style="background-color: #e65236;"></span>
+              </label>
+              <label class="label_box">LVd1
+                <span class="legenda_solo" style="background-color: #e95e3c;"></span>
+              </label>
+              <label class="label_box">LAd1
+                <span class="legenda_solo" style="background-color: #ec6941;"></span>
+              </label>
+              <label class="label_box">CXbd1
+                <span class="legenda_solo" style="background-color: #ef7546;"></span>
+              </label>
+              <label class="label_box">NVe1
+                <span class="legenda_solo" style="background-color: #f2804c;"></span>
+              </label>
+              <label class="label_box">RLd1
+                <span class="legenda_solo" style="background-color: #f58c51;"></span>
+              </label>
+              <label class="label_box">RLd2
+                <span class="legenda_solo" style="background-color: #f89756;"></span>
+              </label>
+              <label class="label_box">PVAd1
+                <span class="legenda_solo" style="background-color: #fba35c;"></span>
+              </label>
+            </section>
+
+            <section>
+              <label class="label_box">PVAd2
+                <span class="legenda_solo" style="background-color: #fdae61;"></span>
+              </label>
+              <label class="label_box">RLd3
+                <span class="legenda_solo" style="background-color: #feb468;"></span>
+              </label>
+              <label class="label_box">LVAd1
+                <span class="legenda_solo" style="background-color: #febb6f;"></span>
+              </label>
+              <label class="label_box">RQg2
+                <span class="legenda_solo" style="background-color: #fec177;"></span>
+              </label>
+              <label class="label_box">GXbd5
+                <span class="legenda_solo" style="background-color: #fec77e;"></span>
+              </label>
+              <label class="label_box">LAd2
+                <span class="legenda_solo" style="background-color: #fecd85;"></span>
+              </label>
+              <label class="label_box">LVd2
+                <span class="legenda_solo" style="background-color: #fed48c;"></span>
+              </label>
+              <label class="label_box">LVd3
+                <span class="legenda_solo" style="background-color: #ffda94;"></span>
+              </label>
+              <label class="label_box">PAd1
+                <span class="legenda_solo" style="background-color: #ffe09b;"></span>
+              </label>
+              <label class="label_box">PVe1
+                <span class="legenda_solo" style="background-color: #ffe6a2;"></span>
+              </label>
+              <label class="label_box">LVd4
+                <span class="legenda_solo" style="background-color: #ffeda9;"></span>
+              </label>
+              <label class="label_box">LVAd4
+                <span class="legenda_solo" style="background-color: #fff3b1;"></span>
+              </label>
+              <label class="label_box">PVAd3
+                <span class="legenda_solo" style="background-color: #fff9b8;"></span>
+              </label>
+            </section>
+
+            <section>
+              <label class="label_box">LVAd4
+                <span class="legenda_solo" style="background-color: #ffffbf;"></span>
+              </label>
+              <label class="label_box">PAd2
+                <span class="legenda_solo" style="background-color: #f9fdbd;"></span>
+              </label>
+              <label class="label_box">EKg1
+                <span class="legenda_solo" style="background-color: #f3fabb;"></span>
+              </label>
+              <label class="label_box">RQg3
+                <span class="legenda_solo" style="background-color: #ecf8b9;"></span>
+              </label>
+              <label class="label_box">RQg4
+                <span class="legenda_solo" style="background-color: #e6f5b7;"></span>
+              </label>
+              <label class="label_box">ESKu1
+                <span class="legenda_solo" style="background-color: #dff2b5;"></span>
+              </label>
+              <label class="label_box">RLd7
+                <span class="legenda_solo" style="background-color: #d9f0b3;"></span>
+              </label>
+              <label class="label_box">LAd6
+                <span class="legenda_solo" style="background-color: #d2edb1;"></span>
+              </label>
+              <label class="label_box">RLd4
+                <span class="legenda_solo" style="background-color: #cceaaf;"></span>
+              </label>
+              <label class="label_box">GXbd4
+                <span class="legenda_solo" style="background-color: #c5e8ac;"></span>
+              </label>
+              <label class="label_box">LAd3
+                <span class="legenda_solo" style="background-color: #bfe5ab;"></span>
+              </label>
+              <label class="label_box">LAd4
+                <span class="legenda_solo" style="background-color: #b8e3a8;"></span>
+              </label>
+              <label class="label_box">LVAd2
+                <span class="legenda_solo" style="background-color: #b2e0a6;"></span>
+              </label>
+            </section>
+
+            <section>
+              <label class="label_box">LVd6
+                <span class="legenda_solo" style="background-color: #bfe5ae;"></span>
+              </label>
+
+              <label class="label_box">PVAd4
+                <span class="legenda_solo" style="background-color: #bfe5ac;"></span>
+              </label>
+              <label class="label_box">PVAd5
+                <span class="legenda_solo" style="background-color: #bfe5ad;"></span>
+              </label>
+              <label class="label_box">LVAd3
+                <span class="legenda_solo" style="background-color: #abdda4;"></span>
+              </label>
+              <label class="label_box">LAd5
+                <span class="legenda_solo" style="background-color: #97cfa8;"></span>
+              </label>
+              <label class="label_box">LVd5
+                <span class="legenda_solo" style="background-color: #8ec9a9;"></span>
+              </label>
+
+              <label class="label_box">FFc1
+                <span class="legenda_solo" style="background-color: #7abbad;"></span>
+              </label>
+              <label class="label_box">NVe2
+                <span class="legenda_solo" style="background-color: #70b4ae;"></span>
+              </label>
+              <label class="label_box">RLd5
+                <span class="legenda_solo" style="background-color: #66adb0;"></span>
+              </label>
+              <label class="label_box">RLd6
+                <span class="legenda_solo" style="background-color: #5ca6b2;"></span>
+              </label>
+
+              <label class="label_box">VGk 1
+                <span class="legenda_solo" style="background-color: #4898b5;"></span>
+              </label>
+              <label class="label_box">CXbd2
+                <span class="legenda_solo" style="background-color: #3e91b7;"></span>
+              </label>
+              <label class="label_box">FXd1
+                <span class="legenda_solo" style="background-color: #358ab9;"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SECTION ENDING -->
+
+      <button class="accordion">Relevo <!-- SECTION BEGGINING -->
+        <div class="icon">
+          <img src="./icons/chevron-down.svg" class="icon-expand">
+          <img src="./icons/chevron-up.svg" class="icon-retract">
+        </div>
+      </button>
+      <div class="panel">
+	      <label class="container">Mostrar/Não mostrar Relevo
+	            <input type="checkbox" onclick="hideOrShowLayer('#')">
+	            <span class="solos"></span>
+	      </label>
+	  </div> <!-- SECTION ENDING -->
+
+	  <button class="accordion">APP <!-- SECTION BEGGINING -->
+        <div class="icon">
+          <img src="./icons/chevron-down.svg" class="icon-expand">
+          <img src="./icons/chevron-up.svg" class="icon-retract">
+        </div>
+      </button>
+      <div class="panel"> 
+        <section class="layer-labels">
+          <section>
+            <label class="container">De topo de morro
+              <input type="checkbox"  onclick="hideOrShowLayer('#')">
+              <span class="#"></span>
+            </label>
+            <label class="container">De drenagem
+              <input type="checkbox"  onclick="hideOrShowLayer('#')">
+              <span class="#"></span>
+            </label>
+          </section>
+        </section>
+      </div> <!-- SECTION ENDING -->
+
+      <button class="accordion">Hidrografia <!-- SECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+	        <button class="accordion" style="background-color: #fff;">Grandes rios <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel">
+	        	<label class="container">Mostrar/Não mostrar rios
+                <input type="checkbox" onclick="hideOrShowLayer('#')">
+                <span class="solos"></span>
+              </label>
+	        </div><!-- SUBSECTION ENDING -->
+	        <button class="accordion" style="background-color: #fff;">Médios rios <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel">
+	        	<label class="container">Mostrar/Não mostrar rios
+                <input type="checkbox" onclick="hideOrShowLayer('#')">
+                <span class="solos"></span>
+              </label>
+	        </div><!-- SUBSECTION ENDING -->
+	        <button class="accordion" style="background-color: #fff;">Pequenos rios <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel">
+	        	<label class="container">Mostrar/Não mostrar rios
+                <input type="checkbox" onclick="hideOrShowLayer('#')">
+                <span class="solos"></span>
+              </label>
+	        </div><!-- SUBSECTION ENDING -->
+
+              <button class="accordion" style="background-color: #fff;">Bacia hidrográfica <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel">
+	        	<label class="container">Mostrar/Não mostrar bacias
+                <input type="checkbox" onclick="hideOrShowLayer('bacias')">
+                <span class="solos"></span>
+              </label>
+              <br>
+              <section class="soil-labels">
+                <section>
+                  <label class="label_box">Alto Rio Branco
+                    <span class="legenda_solo" style="background-color: #f7fbff;"></span>
+                  </label>
+                  <label class="label_box">Baixo Rio Branco
+                    <span class="legenda_solo" style="background-color: #eff6fd;"></span>
+                  </label>
+                  <label class="label_box">Rio Ajarani
+                    <span class="legenda_solo" style="background-color: #e7f1fa;"></span>
+                  </label>
+                  <label class="label_box">Rio Amajari
+                    <span class="legenda_solo" style="background-color: #dfecf8;"></span>
+                  </label>
+                  <label class="label_box">Rio Anauá
+                    <span class="legenda_solo" style="background-color: #d8e7f5;"></span>
+                  </label>
+                  <label class="label_box">Rio Auri
+                    <span class="legenda_solo" style="background-color: #d0e2f3;"></span>
+                  </label>
+                  <label class="label_box">Rio Cachorro
+                    <span class="legenda_solo" style="background-color: #c8ddf0;"></span>
+                  </label>
+                  <label class="label_box">Rio Catrimani
+                    <span class="legenda_solo" style="background-color: #bcd7ec;"></span>
+                  </label>
+                  <label class="label_box">Rio Cauamé
+                    <span class="legenda_solo" style="background-color: #b0d2e8;"></span>
+                  </label>
+                  <label class="label_box">Rio Cotingo
+                    <span class="legenda_solo" style="background-color: #a3cce3;"></span>
+                  </label>
+                  <label class="label_box">Rio Itapará
+                    <span class="legenda_solo" style="background-color: #94c5df;"></span>
+                  </label>
+                  <label class="label_box">Rio Jatapú
+                    <span class="legenda_solo" style="background-color: #83bcdc;"></span>
+                  </label>
+                </section>
+                <section>
+                  <label class="label_box">Rio Jauaperi
+                    <span class="legenda_solo" style="background-color: #73b3d8;"></span>
+                  </label>
+                  <label class="label_box">Rio Jufari
+                    <span class="legenda_solo" style="background-color: #64a9d4;"></span>
+                  </label>
+                  <label class="label_box">Rio Maú
+                    <span class="legenda_solo" style="background-color: #57a0cf;"></span>
+                  </label>
+                  <label class="label_box">Rio Mucajaí
+                    <span class="legenda_solo" style="background-color: #4a97c9;"></span>
+                  </label>
+                  <label class="label_box">Rio Parima
+                    <span class="legenda_solo" style="background-color: #3e8ec4;"></span>
+                  </label>
+                  <label class="label_box">Rio Parimé
+                    <span class="legenda_solo" style="background-color: #3383bf;"></span>
+                  </label>
+                  <label class="label_box">Rio Quitauaú
+                    <span class="legenda_solo" style="background-color: #2879b9;"></span>
+                  </label>
+                  <label class="label_box">Rio Surumú
+                    <span class="legenda_solo" style="background-color: #1e6eb3;"></span>
+                  </label>
+                  <label class="label_box">Rio Tacutu
+                    <span class="legenda_solo" style="background-color: #1563aa;"></span>
+                  </label>
+                  <label class="label_box">Rio Uraricaá
+                    <span class="legenda_solo" style="background-color: #0d58a1;"></span>
+                  </label>
+                  <label class="label_box">Rio Uraricoera
+                    <span class="legenda_solo" style="background-color: #084b94;"></span>
+                  </label>
+                  <label class="label_box">Rio Xeriuini
+                    <span class="legenda_solo" style="background-color: #083d7f;"></span>
+                  </label>
+                </section>
+            </section>
+	        </div><!-- SUBSECTION ENDING -->
+        </div> <!-- SECTION ENDING -->
+
+        <button class="accordion">Vegetação <!-- SECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel">
+	      <label class="container">Mostrar/Não mostrar vegetação
+	            <input type="checkbox" onclick="hideOrShowLayer('#')">
+	            <span class="solos"></span>
+	      </label>
+        </div> <!-- SUBSECTION ENDING -->
+
+         <button class="accordion">Desmatamento <!-- SECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel">
+        	<button class="accordion" style="background-color: #fff;">1970 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">1970
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1971
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1972
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1973
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1974
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">1975
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">1976
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1977
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1978
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1979
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+        	<button class="accordion" style="background-color: #fff;">1980 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">1980
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1981
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1982
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1983
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1984
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">1985
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">1986
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1987
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1988
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1989
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+	        <button class="accordion" style="background-color: #fff;">1990 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">1990
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1991
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1992
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1993
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1994
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">1995
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">1996
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1997
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1998
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1999
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+	        <button class="accordion" style="background-color: #fff;">2000 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">2000
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2001
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2002
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2003
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2004
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">2005
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">2006
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2007
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2008
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2009
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+	        <button class="accordion" style="background-color: #fff;">2010 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">2010
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2011
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2012
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2013
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2014
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">2015
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">2016
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2017
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2018
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2019
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+	        <button class="accordion" style="background-color: #fff;">2020 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">2020
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              
+	          </section>
+          	  <section>
+	              
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+        </div> <!-- SECTION ENDING -->
+
+        <button class="accordion">Fogo <!-- SECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel">
+        	<button class="accordion" style="background-color: #fff;">1980 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">1980
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1981
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1982
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1983
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1984
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">1985
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">1986
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1987
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1988
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1989
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+	        <button class="accordion" style="background-color: #fff;">1990 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">1990
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1991
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1992
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1993
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1994
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">1995
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">1996
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1997
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1998
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">1999
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+	        <button class="accordion" style="background-color: #fff;">2000 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">2000
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2001
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2002
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2003
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2004
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">2005
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">2006
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2007
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2008
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2009
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+	        <button class="accordion" style="background-color: #fff;">2010 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">2010
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2011
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2012
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2013
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2014
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+	              <label class="container">2015
+                  <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                  <span class="#"></span>
+	              </label>
+	              <label class="container">2016
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2017
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2018
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	              <label class="container">2019
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+
+	        <button class="accordion" style="background-color: #fff;">2020 <!-- SUBSECTION BEGGINING -->
+	          <div class="icon">
+	            <img src="./icons/chevron-down.svg" class="icon-expand">
+	            <img src="./icons/chevron-up.svg" class="icon-retract">
+	          </div>
+	        </button>
+	        <div class="panel"> 
+	        	<section class="soil-labels">
+                <section>
+		        	<label class="container">2020
+	                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+	                <span class="#"></span>
+	              </label>
+	          </section>
+          	  <section>
+               </section>
+           </section>
+	        </div> <!--SUBSECTION ENDING -->
+        </div> <!-- SECTION ENDING -->
+
+       <button class="accordion">Estradas <!-- SECTION BEGGINING -->
+        <div class="icon">
+          <img src="./icons/chevron-down.svg" class="icon-expand">
+          <img src="./icons/chevron-up.svg" class="icon-retract">
+        </div>
+      </button>
+      <div class="panel">
+      	<label class="container">Federais
+	    	<input type="checkbox"  onclick="hideOrShowLayer('#')">
+	        <span class="#"></span>
+	    </label>
+	    <label class="container">Estaduais
+	    	<input type="checkbox"  onclick="hideOrShowLayer('#')">
+	        <span class="#"></span>
+	    </label>
+	    <label class="container">Municipais
+	    	<input type="checkbox"  onclick="hideOrShowLayer('#')">
+	        <span class="#"></span>
+	    </label>
+	    <label class="container">Asfaltadas
+	    	<input type="checkbox"  onclick="hideOrShowLayer('#')">
+	        <span class="#"></span>
+	    </label>
+	    <label class="container">Sem asfalto
+	    	<input type="checkbox"  onclick="hideOrShowLayer('#')">
+	        <span class="#"></span>
+	    </label>
+	    <label class="container">Pontes
+	    	<input type="checkbox"  onclick="hideOrShowLayer('#')">
+	        <span class="#"></span>
+	    </label>
+      </div> <!-- SECTION ENDING -->
+
+      <button class="accordion">Assentamentos <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+       </button>
+       <div class="panel">
+       		<label class="container">Mostrar/Não mostrar assentamentos
+                <input type="checkbox" onclick="hideOrShowLayer('#')">
+                <span class="solos"></span>
+             </label>
+       </div>
+
+      <button class="accordion">Estrutura agrária <!-- SECTION BEGGINING -->
+        <div class="icon">
+          <img src="./icons/chevron-down.svg" class="icon-expand">
+          <img src="./icons/chevron-up.svg" class="icon-retract">
+        </div>
+      </button>
+      <div class="panel"> 
+      	<label class="container">Terras indígenas
+             <input type="checkbox"  onclick="hideOrShowLayer('terras_indigenas')">
+             <span class="terras_indigenas"></span>
+        </label>
+        <label class="container">Área militar
+            <input type="checkbox"  onclick="hideOrShowLayer('militar')">
+              <span class="militar"></span>
+        </label>
+        <label class="container">Área de preservação
+            <input type="checkbox"  onclick="hideOrShowLayer('#')">
+              <span class="militar"></span>
+        </label>
+      </div> <!-- SECTION ENDING -->    
+
+      <button class="accordion">CAR <!-- SECTION BEGGINING -->
+        <div class="icon">
+          <img src="./icons/chevron-down.svg" class="icon-expand">
+          <img src="./icons/chevron-up.svg" class="icon-retract">
+        </div>
+      </button>
+      <div class="panel"> 
+        
+        <button class="accordion" style="background-color: #fff;">Alto Alegre <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Amajari <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Boa Vista <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+<button class="accordion" style="background-color: #fff;">Bonfim <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Cantá <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+<button class="accordion" style="background-color: #fff;">Caracaraí <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Caroebe <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Iracema <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+
+        <button class="accordion" style="background-color: #fff;">Mucajaí <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Normandia <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Pacaraima <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Rorainópolis <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">São João da Baliza <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">São Luiz <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+        <button class="accordion" style="background-color: #fff;">Uiramutã <!-- SUBSECTION BEGGINING -->
+          <div class="icon">
+            <img src="./icons/chevron-down.svg" class="icon-expand">
+            <img src="./icons/chevron-up.svg" class="icon-retract">
+          </div>
+        </button>
+        <div class="panel"> 
+          <section class="layer-labels">
+            <section>
+              <label class="container">Área do imóvel
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">APP
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Nascente
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Hidrografia
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Reserva legal
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Uso restrito
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área administrativa
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+              <label class="container">Área consolidada
+                <input type="checkbox"  onclick="hideOrShowLayer('#')">
+                <span class="#"></span>
+              </label>
+            </section>
+          </section>
+        </div> <!-- SUBSECTION ENDING -->
+
+      </div> <!-- SECTION ENDING -->
+    </div> <!-- MENU ENDING -->
+  </section> <!-- BOX ENDING -->
+
+        <section id="analysis">
+            <h3 class="h3-header">Análise de propriedade</h3>
+            <input type="file" id="shape" class="input_file" onchange="analysisShape(this.files)">
+            <div class="tooltip">
+                <span class="tooltiptext">Faça upload de um shape no formato geojson</span>
+                <i class="fa fa-info-circle"></i>
+            </div>
+            <section id="distance">
+            	<label class="container">Calcular distância
+	                <input type="checkbox" onclick="showRoute()">
+	                <span class="solos"></span>
+                </label>
+            </section>
+        </section>
+        <div id="map"></div>
+
+    <script src="functions.js"></script>
+    </body>
+</html>
